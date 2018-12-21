@@ -1,8 +1,9 @@
-# Thinkful Backend Template
+###How to use the API
+  Localhost:8080/api/cats will give you access to our directory of cat objects.
+  localhost:8080/api/dogs will give you access to our directory of dog objects.
 
-A template for developing and deploying Node.js apps.
-
-## Getting started
+###Tech used
+   Node.js and Express.
 
 ### Setting up a project
 
