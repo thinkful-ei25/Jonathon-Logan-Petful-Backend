@@ -1,4 +1,5 @@
 'use strict';
+const Queue = require('../queue');
 let Cats = [
   {
     imageURL: 'https://assets3.thrillist.com/v1/image/2622128/size/tmg-slideshow_l.jpg',
@@ -28,5 +29,9 @@ let Cats = [
     story: 'Escaped the tv world'
   }
 ];
+const catQueue = new Queue();
+Cats.forEach(cat => {
+  catQueue.enqueue(cat);
+});
 
-module.exports = Cats;
+module.exports = catQueue;

@@ -1,11 +1,11 @@
 'use strict';
 const express = require('express');
-const Dogs = require('../data/dogs.js');
+const dogQueue = require('../data/dogs.js');
 
 const router = express.Router();
 
 router.get('/api/dogs', (req, res, next) => {
-  const dog = Dogs[0];
+  const dog = dogQueue.peek();
   if (dog) {
     return res.json(dog);
   } else {
@@ -14,7 +14,7 @@ router.get('/api/dogs', (req, res, next) => {
 });
 
 router.delete('/api/dogs', (req, res, next) => {
-  Dogs.shift();
+  dogQueue.dequeue();
   return res.sendStatus(204).end();
 });
 

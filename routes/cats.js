@@ -1,23 +1,23 @@
 'use strict';
 
 const express = require('express');
-const Cats = require('../data/cats');
+const catQueue = require('../data/cats');
 
 const router = express.Router();
 
 router.get('/api/cats', (req, res, next) => {
-  const cat = Cats[0];
+  const cat = catQueue.peek();
   // console.log(cat);
-  if (!cat) {
-    return res.json('No more cats');
-  } else {
+  if (cat) {
     return res.json(cat);
+  } else {
+    return res.json('No more cats');
   }
 });
 
 router.delete('/api/cats', (req, res, next) => {
   // console.log(Cats);
-  Cats.shift();
+  catQueue.dequeue();
   return res.sendStatus(204).end();
 });
 
